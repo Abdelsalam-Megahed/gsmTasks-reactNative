@@ -30,16 +30,12 @@ export const styles = StyleSheet.create({
       submitTaskButton:{
         width: "40%", 
         marginLeft:120, 
-        marginBottom:362
+        marginBottom: Dimensions.get('window').height - 435
       },
     //Map component styles
-      mapContainer: {
-        flex: 1,
-        backgroundColor: '#fff',
-      },
       mapStyle: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height-15,
       },
       statusBar: {
         backgroundColor: "#C2185B",
@@ -49,10 +45,10 @@ export const styles = StyleSheet.create({
       container: {
         // flex: 1,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
       },
-buttonContainer: {
-          flex: 1,
-}
+      buttonContainer: {
+              flex: 1,
+              borderWidth: 1,
+              borderColor: '#fff',
+    },
   });
