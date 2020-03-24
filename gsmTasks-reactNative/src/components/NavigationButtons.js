@@ -1,16 +1,19 @@
 import React from 'react';
-import { StyleSheet, View, Button, TouchableOpacity, Text } from 'react-native';
+import { View, Button } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import { styles } from '../styles/styles';
+
 
 export const NavigationButtons = (props) => {
          const { navigate } = props.navigation;
          const routeName= props.navigation.state.key;
+         const inActiveButtonColor = '#D3D3D3';
         
         return(
           <View style={styles.container}>
             <View style={styles.buttonContainer}>
               <Button
-              color={routeName == 'MapPage' ? null : '#D3D3D3'}
+              color={routeName == 'MapPage' ? null : inActiveButtonColor}
                 title="Map"
                 onPress={() => navigate('MapPage')}
             /> 
@@ -18,7 +21,7 @@ export const NavigationButtons = (props) => {
 
             <View style={styles.buttonContainer}>
               <Button
-              color={routeName == 'AddTaskPage' ? null : '#D3D3D3'}
+              color={routeName == 'AddTaskPage' ? null : inActiveButtonColor}
                 title="Add Task"
                 onPress={() => navigate('AddTaskPage')}
               />
@@ -28,14 +31,4 @@ export const NavigationButtons = (props) => {
     }
     export default withNavigation(NavigationButtons);
     
-  const styles = StyleSheet.create({  
-      container: {
-                  // flex: 1,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                },
-      buttonContainer: {
-                    flex: 1,
-    }
-  });    
+ 

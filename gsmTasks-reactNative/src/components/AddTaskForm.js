@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { Text, View, Button, TextInput } from 'react-native';
 import {addNewTask} from '../api/api';
 import  NavigationButtons  from './NavigationButtons';
+import { styles } from '../styles/styles';
 
 export default class AddTaskForm extends React.Component{
     state = {
@@ -59,37 +60,6 @@ export default class AddTaskForm extends React.Component{
                  <NavigationButtons />
             </View>
          );
-    }
-   
+        }
 }
 
-const styles = StyleSheet.create({
-    textInput: {
-        textAlign:'center',
-        height:60,
-        margin:15,
-        borderWidth: 1,
-        borderColor: '#d6d7da',
-      },
-      inputFormat: {
-        margin:15,
-        fontSize:10,
-        paddingBottom:60
-      },
-      addTaskText: {
-        paddingTop:90, 
-        paddingBottom:40, 
-        paddingLeft:15, 
-        fontSize:40
-      },
-      successText:{
-        color:'green', 
-        paddingLeft:15,
-        fontSize: 10
-      },
-      submitTaskButton:{
-        width: "40%", 
-        marginLeft:120, 
-        marginBottom:362
-      }
-  });
