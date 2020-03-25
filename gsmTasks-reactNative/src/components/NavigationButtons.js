@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { styles } from '../styles/styles';
-
 
 export const NavigationButtons = (props) => {
          const { navigate } = props.navigation;

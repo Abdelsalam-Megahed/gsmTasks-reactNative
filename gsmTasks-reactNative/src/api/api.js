@@ -1,6 +1,6 @@
 const url = 'https://gsmtasks.com/api/tasks/tasks/';
 const token= '6eb1f5a68bf6220581dbf67231fe6d541bdbca6f';
-const account="https://gsmtasks.com/api/tasks/accounts/2c1d3a20-6317-4373-9a67-13c7f1ebb7de/";
+const account='https://gsmtasks.com/api/tasks/accounts/2c1d3a20-6317-4373-9a67-13c7f1ebb7de/';
 const category = "assignment";
 
 export const fetchTasks = () => 
@@ -13,7 +13,7 @@ export const fetchTasks = () =>
     .catch(err => console.log(err));
 
 
-export const  addNewTask = (raw_address) =>
+    export const  addNewTask = (raw_address) =>
     fetch(`${url}`, {
         headers: {
             'Content-Type': 'application/json',
@@ -27,8 +27,10 @@ export const  addNewTask = (raw_address) =>
                 raw_address: raw_address,
             }
         })
-    })
+        
+       
+    }) 
     .then(res => console.log(res.json()))
-    .catch(err => console.log(err));
-
-
+    .catch(err => console.log(err))
+    
+    

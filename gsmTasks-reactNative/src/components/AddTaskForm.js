@@ -1,65 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Button, TextInput } from 'react-native';
-import {addNewTask} from '../api/api';
+import { addNewTask } from '../api/api';
 import  NavigationButtons  from './NavigationButtons';
 import { styles } from '../styles/styles';
 
-export default class AddTaskForm extends React.Component{
-    state = {
-        address: '',
-        isFormValid: false,
-        success: false,
-        error: ''
-    }
+const AddTaskForm = () => {
+    const [address, setAddress] = useState('');
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false);
 
     handleAddressChange = address => {
-        this.setState({address});
-        if(this.state.address.length > 8 && this.state.address.match(/[,#-\/\s\!\@\$.....]/))
+        setAddress(address);
+        if(address.length > 8 && address.match(/[,#-\/\s\!\@\$.....]/))
             {
-            this.setState({isFormValid: true})
+                setIsFormValid(true);
         }else{
-            this.setState({isFormValid: false})
-        }
+                setIsFormValid(false);
+        } 
     }
-    
+
     handleSubmit = () => {
-        if(this.state.isFormValid){
-            addNewTask(this.state.address)
-            this.setState({success: true, address: '', isFormValid: false})
+        if(isFormValid){
+            addNewTask(address);
+            setSuccess(true);
+            setAddress('');
+            setIsFormValid(false);
         }else{
-            this.setState({error: 'Address is not valid'})
+            setError(true);
         }
     }
 
-    render(){
-        return ( 
-             <View>
+    return(
+        <View>
              <Text style={styles.addTaskText}>Add Task</Text>
-
-                {this.state.error !== null ? 
-                    <Text style={{color: 'red'}}>{this.state.error}</Text> : null}
 
             <TextInput 
                 style={styles.textInput}
                 placeholder="Address" 
-                value={this.state.address} 
-                onChangeText={this.handleAddressChange}
+                value={address} 
+                onChangeText={handleAddressChange}
             />
             <Text style={styles.inputFormat}>Please make sure to enter a valid address. 
-                {this.state.success && 
+                {error ? 
+                    <Text style={{color: 'red'}}>Please enter a valid address.</Text> : null}
+
+                {success && 
                     <Text style={styles.successText}>Task has been added successfully</Text>}
             </Text>
            
             <View style={styles.submitTaskButton}>
                 <Button 
                 title="Add Task" 
-                disabled={!this.state.isFormValid}
-                onPress={this.handleSubmit}
+                disabled={!isFormValid}
+                onPress={handleSubmit}
                 />
             </View>
                  <NavigationButtons />
             </View>
-         );
-        }
+    );
 }
+
+export default AddTaskForm;
+
 
